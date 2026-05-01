@@ -21,8 +21,8 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>{personalInfo.fullName} | {personalInfo.jobTitle}</title>
-        <meta name="description" content={personalInfo.tagline} />
+        <title>{fullName} | {personalInfo?.jobTitle || 'Portfolio'}</title>
+        <meta name="description" content={personalInfo?.tagline || 'Welcome to my cinematic portfolio.'} />
       </Helmet>
 
       {/* Hero — Full Screen */}
@@ -50,10 +50,10 @@ const Home = () => {
               </p>
             </div>
             <p className="font-body text-base md:text-lg tracking-[0.3em] text-white/60 uppercase mb-10 mt-4">
-              {personalInfo.jobTitle}
+              {personalInfo?.jobTitle || 'Developer'}
             </p>
             <div className="flex flex-wrap gap-4 mb-16">
-              {personalInfo.resumeLink && personalInfo.resumeLink !== '#' && (
+              {personalInfo?.resumeLink && personalInfo?.resumeLink !== '#' && (
                 <a href={personalInfo.resumeLink} target="_blank" rel="noreferrer"
                   className="border border-white/60 text-white px-8 py-3 font-body font-medium tracking-wider text-sm hover:border-siteCyan hover:text-siteCyan transition-all uppercase">
                   Resume
@@ -67,13 +67,13 @@ const Home = () => {
           </motion.div>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.6 }} className="flex items-center gap-5">
-            {personalInfo.github && personalInfo.github !== '#' && (
+            {personalInfo?.github && personalInfo?.github !== '#' && (
               <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-white/40 hover:text-siteCyan transition-colors font-body font-bold text-sm">Gh</a>
             )}
-            {personalInfo.linkedin && personalInfo.linkedin !== '#' && (
+            {personalInfo?.linkedin && personalInfo?.linkedin !== '#' && (
               <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="text-white/40 hover:text-siteCyan transition-colors font-body font-bold text-sm">in</a>
             )}
-            {personalInfo.email && (
+            {personalInfo?.email && (
               <a href={`mailto:${personalInfo.email}`} className="text-white/40 hover:text-siteCyan transition-colors font-body text-xs tracking-wider">
                 {personalInfo.email}
               </a>
