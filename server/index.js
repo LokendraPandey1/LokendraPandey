@@ -6,6 +6,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+const path = require('path');
+
 const contactRoutes = require('./routes/contact');
 const authRoutes = require('./routes/auth');
 const portfolioRoutes = require('./routes/portfolio');
@@ -14,8 +16,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(helmet());
-app.use(cors()); // Allow all origins for easier deployment
+app.use(helmet({
+  contentSecurityPolicy: false, // Disable for easier iframe embedding/external assets
+}));
+app.use(cors());
 app.use(express.json());
 
 // Routes
@@ -28,8 +32,18 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-app.get('/', (req, res) => {
-  res.send('Portfolio API is running');
+// Static files for frontend
+const clientDistPath = path.join(__dirname, '../client/dist');
+app.use(express.static(clientDistPath));
+
+// Serve frontend for any other route
+app.get('*', (req, res) => {
+  // If it's an API route that wasn't caught, send 404
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ message: 'API route not found' });
+  }
+  // Otherwise, serve the frontend
+  res.sendFile(path.join(clientDistPath, 'index.html'));
 });
 
 app.listen(PORT, () => {
