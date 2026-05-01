@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Logo */}
         <Link to="/" className="font-heading text-xl font-black uppercase tracking-widest text-white hover:text-siteCyan transition-colors">
-          {personalInfo.fullName.split(' ')[0]}.
+          {(personalInfo?.fullName || 'Portfolio').split(' ')[0]}.
         </Link>
 
         {/* Links */}

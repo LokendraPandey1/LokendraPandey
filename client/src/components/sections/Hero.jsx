@@ -13,7 +13,8 @@ const Hero = () => {
   );
 
   const { personalInfo } = portfolioData;
-  const nameParts = personalInfo.fullName.split(' ');
+  const fullName = personalInfo?.fullName || 'Portfolio Owner';
+  const nameParts = fullName.split(' ');
   const firstName = nameParts[0];
   const lastName = nameParts.slice(1).join(' ');
 
@@ -23,8 +24,8 @@ const Hero = () => {
       {/* Background Image: Portrait on the right */}
       <div className="absolute top-0 right-0 w-full md:w-3/4 h-full z-0 opacity-80 md:opacity-100">
         <img
-          src={personalInfo.profilePhoto}
-          alt={personalInfo.fullName}
+          src={personalInfo?.profilePhoto || '/default-profile.jpg'}
+          alt={fullName}
           className="w-full h-full object-cover object-center lg:object-[center_20%]"
           style={{ filter: 'brightness(0.8) contrast(1.1)' }}
         />
@@ -65,7 +66,7 @@ const Hero = () => {
 
           {/* Job Title */}
           <p className="font-body text-base md:text-lg tracking-[0.2em] text-white/70 uppercase mb-12 mt-6 max-w-lg leading-relaxed">
-            {personalInfo.jobTitle}
+            {personalInfo?.jobTitle || 'Developer'}
           </p>
 
           {/* CTA Buttons */}
@@ -98,19 +99,19 @@ const Hero = () => {
           transition={{ delay: 0.6, duration: 0.6 }}
           className="flex items-center gap-6 border-l border-siteCyan/30 pl-5"
         >
-          {personalInfo.github && personalInfo.github !== '#' && (
+          {personalInfo?.github && personalInfo?.github !== '#' && (
             <a href={personalInfo.github} target="_blank" rel="noreferrer"
               className="text-white/40 hover:text-siteCyan transition-colors font-body text-xs tracking-widest uppercase">
               Github
             </a>
           )}
-          {personalInfo.linkedin && personalInfo.linkedin !== '#' && (
+          {personalInfo?.linkedin && personalInfo?.linkedin !== '#' && (
             <a href={personalInfo.linkedin} target="_blank" rel="noreferrer"
               className="text-white/40 hover:text-siteCyan transition-colors font-body text-xs tracking-widest uppercase">
               LinkedIn
             </a>
           )}
-          {personalInfo.email && (
+          {personalInfo?.email && (
             <a href={`mailto:${personalInfo.email}`}
               className="text-white/40 hover:text-siteCyan transition-colors font-body text-xs tracking-widest uppercase">
               Email
