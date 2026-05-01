@@ -29,7 +29,12 @@ app.use('/api/portfolio', portfolioRoutes);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio')
-  .then(() => console.log('MongoDB connected'))
+  .then(async () => {
+    console.log('MongoDB connected to database:', mongoose.connection.name);
+    const Portfolio = require('./models/Portfolio');
+    const count = await Portfolio.countDocuments();
+    console.log('Database records count:', count);
+  })
   .catch(err => console.error('MongoDB connection error:', err));
 
 // Static files for frontend
