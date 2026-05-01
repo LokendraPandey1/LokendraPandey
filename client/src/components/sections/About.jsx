@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import { PortfolioContext } from '../../context/PortfolioContext';
-import { Github, FileText, MapPin, Mail, ExternalLink } from 'lucide-react';
+import { FileText, MapPin, Mail, ExternalLink } from 'lucide-react';
+import { Github } from '../icons/SocialIcons';
 
 
 const About = () => {

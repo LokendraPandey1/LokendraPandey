@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { PortfolioContext } from '../../context/PortfolioContext';
 import { Link } from 'react-router-dom';
 
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import { Github, Linkedin } from '../icons/SocialIcons';
 
 const Hero = () => {
 
