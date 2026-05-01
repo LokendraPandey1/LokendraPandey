@@ -7,7 +7,8 @@ const Experience = require('./models/Experience');
 const Education = require('./models/Education');
 const Assignment = require('./models/Assignment');
 
-dotenv.config();
+const path = require('path');
+dotenv.config({ path: path.join(__dirname, '.env') });
 
 const seedData = async () => {
   try {

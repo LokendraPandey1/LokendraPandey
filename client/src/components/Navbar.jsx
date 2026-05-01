@@ -70,6 +70,7 @@ const Navbar = () => {
                 CV
               </a>
             )}
+
           </div>
 
           {/* Mobile toggle */}

@@ -98,8 +98,8 @@ const Home = () => {
           <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
             className="grid grid-cols-2 gap-px bg-white/5">
             {[
-              { label: 'Years Experience', value: `${aboutMe.yearsOfExperience}+` },
-              { label: 'Projects Built', value: `${projects?.length || 5}+` },
+              { label: 'Years Experience', value: `${aboutMe?.yearsOfExperience || 0}+` },
+              { label: 'Projects Built', value: `${projects?.length || 0}+` },
               { label: 'Specialization', value: 'AI/ML' },
               { label: 'Status', value: 'Open to Work' },
             ].map((stat, i) => (

@@ -11,8 +11,6 @@ import ProjectDetailPage from './pages/ProjectDetailPage';
 import ExperiencePage from './pages/ExperiencePage';
 import AssignmentsPage from './pages/AssignmentsPage';
 import ContactPage from './pages/ContactPage';
-import Login from './pages/admin/Login';
-import Dashboard from './pages/admin/Dashboard';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -52,10 +50,6 @@ function App() {
             <Route path="/experience" element={<ExperiencePage />} />
             <Route path="/assignments" element={<AssignmentsPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            
-            {/* Admin Routes */}
-            <Route path="/admin/login" element={<Login />} />
-            <Route path="/admin/dashboard" element={<Dashboard />} />
           </Routes>
         </main>
         <Footer />
@@ -63,6 +57,7 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;
 

@@ -13,7 +13,7 @@ const Education = () => {
     <div>
       <SectionHeader title="Education" />
       <div className="space-y-6">
-        {education.map((edu, index) => (
+        {education?.map((edu, index) => (
           <motion.div
             key={edu._id || index}
             initial={{ opacity: 0, y: 10 }}

@@ -18,19 +18,19 @@ const Footer = () => {
 
         {/* Links */}
         <div className="flex gap-8">
-          {personalInfo.github && personalInfo.github !== '#' && (
+          {personalInfo?.github && personalInfo.github !== '#' && (
             <a href={personalInfo.github} target="_blank" rel="noreferrer"
               className="text-white/30 hover:text-siteCyan transition-colors font-body text-xs uppercase tracking-wider">
               GitHub
             </a>
           )}
-          {personalInfo.linkedin && personalInfo.linkedin !== '#' && (
+          {personalInfo?.linkedin && personalInfo.linkedin !== '#' && (
             <a href={personalInfo.linkedin} target="_blank" rel="noreferrer"
               className="text-white/30 hover:text-siteCyan transition-colors font-body text-xs uppercase tracking-wider">
               LinkedIn
             </a>
           )}
-          {personalInfo.email && (
+          {personalInfo?.email && (
             <a href={`mailto:${personalInfo.email}`}
               className="text-white/30 hover:text-siteCyan transition-colors font-body text-xs uppercase tracking-wider">
               Email
@@ -40,8 +40,9 @@ const Footer = () => {
 
         {/* Copyright */}
         <p className="text-white/20 font-body text-xs">
-          © {new Date().getFullYear()} {personalInfo.fullName}
+          © {new Date().getFullYear()} {personalInfo?.fullName || 'Lokendra Pandey'}
         </p>
+
       </div>
     </footer>
   );

@@ -16,7 +16,7 @@ const Experience = () => {
         {/* Vertical spine */}
         <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-siteCyan via-white/10 to-transparent" />
 
-        {experience.map((job, index) => (
+        {experience?.map((job, index) => (
           <motion.div
             key={job._id || index}
             initial={{ opacity: 0, y: 15 }}

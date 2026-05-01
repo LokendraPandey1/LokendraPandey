@@ -1,5 +1,4 @@
 const { validationResult } = require('express-validator');
-const Contact = require('../models/Contact');
 const nodemailer = require('nodemailer');
 
 exports.submitContact = async (req, res) => {
@@ -11,18 +10,14 @@ exports.submitContact = async (req, res) => {
   const { name, email, message } = req.body;
 
   try {
-    // Save to database
-    const newContact = new Contact({
-      name,
-      email,
-      message
-    });
-    await newContact.save();
-
+    console.log(`New contact message from ${name} (${email}): ${message}`);
+    
+    // Save to database logic removed
+    
     // Send email using Nodemailer (Optional if EMAIL_USER is configured)
     if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
       const transporter = nodemailer.createTransport({
-        service: 'gmail', // Use your email provider or SMTP details
+        service: 'gmail', 
         auth: {
           user: process.env.EMAIL_USER,
           pass: process.env.EMAIL_PASS
@@ -31,7 +26,7 @@ exports.submitContact = async (req, res) => {
 
       const mailOptions = {
         from: process.env.EMAIL_USER,
-        to: process.env.EMAIL_USER, // Send to yourself
+        to: process.env.EMAIL_USER, 
         subject: `New Portfolio Message from ${name}`,
         text: `You have received a new message from your portfolio contact form.\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`
       };
@@ -45,3 +40,4 @@ exports.submitContact = async (req, res) => {
     res.status(500).send('Server Error');
   }
 };
+

@@ -59,7 +59,7 @@ const Skills = () => {
 
   return (
     <div className="space-y-10">
-      {skills.map((group, idx) => (
+      {skills?.map((group, idx) => (
         <div key={idx}>
           <SectionHeader title={group.category} />
           {group.items.map((skill, i) => (

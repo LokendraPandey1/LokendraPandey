@@ -24,7 +24,7 @@ const Hero = () => {
       {/* Background Image: Portrait on the right */}
       <div className="absolute top-0 right-0 w-full md:w-3/4 h-full z-0 opacity-80 md:opacity-100">
         <img
-          src={personalInfo?.profilePhoto || '/default-profile.jpg'}
+          src={personalInfo?.profilePhoto || '/lokendra-dark.png'}
           alt={fullName}
           className="w-full h-full object-cover object-center lg:object-[center_20%]"
           style={{ filter: 'brightness(0.8) contrast(1.1)' }}

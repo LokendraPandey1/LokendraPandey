@@ -12,12 +12,13 @@ const ProjectDetailPage = () => {
   const [lightboxImg, setLightboxImg] = useState(null);
 
   useEffect(() => {
-    if (!portfolioData) return;
+    if (!portfolioData?.projects) return;
     const found =
       portfolioData.projects.find(p => p._id === id || p.id === id) ||
       portfolioData.projects[parseInt(id?.replace('project-', ''), 10)];
     if (found) setProject(found);
   }, [portfolioData, id]);
+
 
   if (loading) return (
     <div className="h-screen bg-siteBlack flex items-center justify-center">

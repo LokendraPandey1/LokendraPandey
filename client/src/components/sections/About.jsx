@@ -40,7 +40,7 @@ const About = () => {
             className="md:w-1/3"
           >
             <p className="text-white/60 font-body text-sm md:text-base leading-relaxed border-l border-siteCyan/30 pl-4">
-              {personalInfo.tagline}
+              {personalInfo?.tagline || 'Engineering solutions from algorithms to deployable systems.'}
             </p>
           </motion.div>
         </div>
@@ -59,18 +59,19 @@ const About = () => {
             {/* Image Container */}
             <div className="relative aspect-[3/4] w-full overflow-hidden border border-white/10 group">
               <motion.img
-                src={personalInfo.profilePhoto}
-                alt={personalInfo.fullName}
+                src={personalInfo?.profilePhoto || '/lokendra-dark.png'}
+                alt={personalInfo?.fullName || 'User'}
                 className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-700"
               />
+
               {/* Inner gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-siteBlack via-transparent to-transparent opacity-80" />
               
               {/* Floating Name Badge */}
               <div className="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-siteBlack/40 border border-white/10 p-4 flex justify-between items-end">
                 <div>
-                  <p className="font-heading font-bold text-white text-xl uppercase tracking-widest">{personalInfo.fullName}</p>
-                  <p className="text-siteCyan font-body text-[10px] tracking-widest uppercase mt-1">{personalInfo.jobTitle}</p>
+                  <p className="font-heading font-bold text-white text-xl uppercase tracking-widest">{personalInfo?.fullName || 'Lokendra Pandey'}</p>
+                  <p className="text-siteCyan font-body text-[10px] tracking-widest uppercase mt-1">{personalInfo?.jobTitle || 'Developer'}</p>
                 </div>
               </div>
             </div>
@@ -93,7 +94,7 @@ const About = () => {
               }}
               className="space-y-6"
             >
-              {aboutMe.longBio?.map((para, i) => (
+              {aboutMe?.longBio?.map((para, i) => (
                 <motion.p
                   key={i}
                   variants={{
@@ -117,19 +118,19 @@ const About = () => {
             >
               <div>
                 <p className="text-white/20 font-body text-[10px] uppercase tracking-[0.2em] mb-2">Location</p>
-                <p className="text-white font-body text-sm tracking-wide">{personalInfo.location}</p>
+                <p className="text-white font-body text-sm tracking-wide">{personalInfo?.location || 'India'}</p>
               </div>
               <div>
                 <p className="text-white/20 font-body text-[10px] uppercase tracking-[0.2em] mb-2">Contact</p>
-                <a href={`mailto:${personalInfo.email}`} className="text-siteCyan hover:text-white transition-colors font-body text-sm tracking-wide">
-                  {personalInfo.email}
+                <a href={`mailto:${personalInfo?.email}`} className="text-siteCyan hover:text-white transition-colors font-body text-sm tracking-wide">
+                  {personalInfo?.email || 'email@example.com'}
                 </a>
               </div>
               <div className="col-span-2">
                 <p className="text-white/20 font-body text-[10px] uppercase tracking-[0.2em] mb-2">Currently</p>
                 <p className="text-white font-body text-sm tracking-wide flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-siteCyan animate-pulse" />
-                  {aboutMe.currently}
+                  {aboutMe?.currently || 'Open to opportunities'}
                 </p>
               </div>
             </motion.div>
@@ -142,13 +143,13 @@ const About = () => {
               transition={{ delay: 0.6 }}
               className="flex gap-4 pt-4"
             >
-              <a href={personalInfo.resumeLink} target="_blank" rel="noreferrer" className="group relative inline-flex items-center gap-3 px-8 py-4 bg-siteCyan text-siteBlack font-heading font-bold uppercase tracking-widest overflow-hidden">
+              <a href={personalInfo?.resumeLink || '#'} target="_blank" rel="noreferrer" className="group relative inline-flex items-center gap-3 px-8 py-4 bg-siteCyan text-siteBlack font-heading font-bold uppercase tracking-widest overflow-hidden">
                 <span className="relative z-10">Resume PDF</span>
                 <span className="relative z-10 transition-transform duration-300 group-hover:translate-y-1">↓</span>
                 <div className="absolute inset-0 bg-white transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
               </a>
               
-              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center px-6 py-4 border border-white/20 text-white font-heading font-bold uppercase tracking-widest hover:border-siteCyan hover:text-siteCyan transition-all">
+              <a href={personalInfo?.github || '#'} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center px-6 py-4 border border-white/20 text-white font-heading font-bold uppercase tracking-widest hover:border-siteCyan hover:text-siteCyan transition-all">
                 GitHub
               </a>
             </motion.div>
