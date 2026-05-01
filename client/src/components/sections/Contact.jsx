@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import axios from 'axios';
+import api from '../../api/axios';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -16,7 +16,7 @@ const Contact = () => {
     setLoading(true);
     setStatus('');
     try {
-      await axios.post('http://localhost:5000/api/contact', formData);
+      await api.post('/contact', formData);
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
     } catch (err) {
