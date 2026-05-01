@@ -21,33 +21,15 @@ const Assignments = () => {
         </div>
         
         {/* Video Player Container */}
-        <div className="relative w-full aspect-video bg-siteCard border border-white/10 overflow-hidden group">
-          {/* Placeholder Background */}
-          <div className="absolute inset-0 bg-siteBlack flex flex-col items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-white/20 mb-3">
-              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
-              <line x1="7" y1="2" x2="7" y2="22"></line>
-              <line x1="17" y1="2" x2="17" y2="22"></line>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <line x1="2" y1="7" x2="7" y2="7"></line>
-              <line x1="2" y1="17" x2="7" y2="17"></line>
-              <line x1="17" y1="17" x2="22" y2="17"></line>
-              <line x1="17" y1="7" x2="22" y2="7"></line>
-            </svg>
-            <p className="text-white/30 font-body text-xs uppercase tracking-widest">Video Placeholder</p>
-            <p className="text-siteCyan/50 font-body text-[10px] mt-1 text-center max-w-xs">
-              Upload your video file (e.g. mp4) to the public folder and update the src attribute, or embed a YouTube link here.
-            </p>
-          </div>
-
-          {/* Actual Video Tag (Hidden until src is added) */}
-          {/* <video 
+        <div className="relative w-full aspect-video bg-siteBlack border border-white/10 overflow-hidden shadow-2xl group">
+          <video 
             controls 
-            className="absolute inset-0 w-full h-full object-cover z-10"
-            src="/self-intro.mp4" 
-            poster="/video-thumbnail.jpg"
-          /> */}
+            preload="metadata"
+            className="w-full h-full object-cover"
+            src="/intro.mp4" 
+          />
         </div>
+
       </motion.section>
 
       {/* ── Section 2: Essay ── */}

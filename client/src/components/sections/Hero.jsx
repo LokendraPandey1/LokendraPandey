@@ -3,7 +3,10 @@ import { motion } from 'framer-motion';
 import { PortfolioContext } from '../../context/PortfolioContext';
 import { Link } from 'react-router-dom';
 
+import { Github, Linkedin, Mail } from 'lucide-react';
+
 const Hero = () => {
+
   const { portfolioData, loading } = useContext(PortfolioContext);
 
   if (loading || !portfolioData) return (
@@ -101,23 +104,24 @@ const Hero = () => {
         >
           {personalInfo?.github && personalInfo?.github !== '#' && (
             <a href={personalInfo.github} target="_blank" rel="noreferrer"
-              className="text-white/40 hover:text-siteCyan transition-colors font-body text-xs tracking-widest uppercase">
-              Github
+              className="text-white/40 hover:text-siteCyan transition-colors" title="Github">
+              <Github size={20} strokeWidth={1.5} />
             </a>
           )}
           {personalInfo?.linkedin && personalInfo?.linkedin !== '#' && (
             <a href={personalInfo.linkedin} target="_blank" rel="noreferrer"
-              className="text-white/40 hover:text-siteCyan transition-colors font-body text-xs tracking-widest uppercase">
-              LinkedIn
+              className="text-white/40 hover:text-siteCyan transition-colors" title="LinkedIn">
+              <Linkedin size={20} strokeWidth={1.5} />
             </a>
           )}
           {personalInfo?.email && (
             <a href={`mailto:${personalInfo.email}`}
-              className="text-white/40 hover:text-siteCyan transition-colors font-body text-xs tracking-widest uppercase">
-              Email
+              className="text-white/40 hover:text-siteCyan transition-colors" title="Email">
+              <Mail size={20} strokeWidth={1.5} />
             </a>
           )}
         </motion.div>
+
       </div>
 
       {/* Scroll indicator */}

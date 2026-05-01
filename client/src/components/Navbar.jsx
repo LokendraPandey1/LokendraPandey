@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { PortfolioContext } from '../context/PortfolioContext';
+import { Phone, FileText } from 'lucide-react';
+
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,10 +56,10 @@ const Navbar = () => {
             {portfolioData?.personalInfo?.phone && (
               <a
                 href={`tel:${portfolioData.personalInfo.phone}`}
-                className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
+                className="flex items-center gap-2 text-xs font-body font-medium text-white/60 hover:text-white transition-colors"
               >
-                <span className="text-siteCyan">📞</span>
-                {portfolioData.personalInfo.phone}
+                <Phone size={14} className="text-siteCyan" />
+                <span>{portfolioData.personalInfo.phone}</span>
               </a>
             )}
             {portfolioData?.personalInfo?.resumeLink && portfolioData.personalInfo.resumeLink !== '#' && (
@@ -65,13 +67,14 @@ const Navbar = () => {
                 href={portfolioData.personalInfo.resumeLink}
                 target="_blank"
                 rel="noreferrer"
-                className="border border-siteCyan text-siteCyan px-4 py-1.5 text-sm font-medium hover:bg-siteCyan hover:text-siteBlack transition-all"
+                className="flex items-center gap-2 border border-siteCyan text-siteCyan px-4 py-1.5 text-xs font-medium hover:bg-siteCyan hover:text-siteBlack transition-all"
               >
-                CV
+                <FileText size={14} />
+                <span>RESUME</span>
               </a>
             )}
-
           </div>
+
 
           {/* Mobile toggle */}
           <button

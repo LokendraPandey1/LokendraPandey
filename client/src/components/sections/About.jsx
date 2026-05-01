@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import { PortfolioContext } from '../../context/PortfolioContext';
+import { Github, FileText, MapPin, Mail, ExternalLink } from 'lucide-react';
+
 
 const About = () => {
   const { portfolioData, loading } = useContext(PortfolioContext);
@@ -117,11 +119,17 @@ const About = () => {
               className="grid grid-cols-2 gap-6 pt-8 border-t border-white/10"
             >
               <div>
-                <p className="text-white/20 font-body text-[10px] uppercase tracking-[0.2em] mb-2">Location</p>
+                <p className="text-white/20 font-body text-[10px] uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
+                  <MapPin size={10} className="text-siteCyan" />
+                  Location
+                </p>
                 <p className="text-white font-body text-sm tracking-wide">{personalInfo?.location || 'India'}</p>
               </div>
               <div>
-                <p className="text-white/20 font-body text-[10px] uppercase tracking-[0.2em] mb-2">Contact</p>
+                <p className="text-white/20 font-body text-[10px] uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
+                  <Mail size={10} className="text-siteCyan" />
+                  Contact
+                </p>
                 <a href={`mailto:${personalInfo?.email}`} className="text-siteCyan hover:text-white transition-colors font-body text-sm tracking-wide">
                   {personalInfo?.email || 'email@example.com'}
                 </a>
@@ -141,18 +149,20 @@ const About = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className="flex gap-4 pt-4"
+              className="flex flex-wrap gap-4 pt-4"
             >
               <a href={personalInfo?.resumeLink || '#'} target="_blank" rel="noreferrer" className="group relative inline-flex items-center gap-3 px-8 py-4 bg-siteCyan text-siteBlack font-heading font-bold uppercase tracking-widest overflow-hidden">
+                <FileText size={18} className="relative z-10" />
                 <span className="relative z-10">Resume PDF</span>
-                <span className="relative z-10 transition-transform duration-300 group-hover:translate-y-1">↓</span>
                 <div className="absolute inset-0 bg-white transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
               </a>
               
-              <a href={personalInfo?.github || '#'} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center px-6 py-4 border border-white/20 text-white font-heading font-bold uppercase tracking-widest hover:border-siteCyan hover:text-siteCyan transition-all">
-                GitHub
+              <a href={personalInfo?.github || '#'} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 justify-center px-8 py-4 border border-white/20 text-white font-heading font-bold uppercase tracking-widest hover:border-siteCyan hover:text-siteCyan transition-all">
+                <Github size={18} />
+                <span>GitHub</span>
               </a>
             </motion.div>
+
 
           </div>
         </div>

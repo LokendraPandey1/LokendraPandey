@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { PortfolioContext } from '../context/PortfolioContext';
+import { Github, Linkedin, Mail } from 'lucide-react';
+
 
 const Footer = () => {
   const { portfolioData, loading } = useContext(PortfolioContext);
@@ -20,23 +22,27 @@ const Footer = () => {
         <div className="flex gap-8">
           {personalInfo?.github && personalInfo.github !== '#' && (
             <a href={personalInfo.github} target="_blank" rel="noreferrer"
-              className="text-white/30 hover:text-siteCyan transition-colors font-body text-xs uppercase tracking-wider">
-              GitHub
+              className="group flex items-center gap-2 text-white/30 hover:text-siteCyan transition-colors font-body text-xs uppercase tracking-wider">
+              <Github size={14} />
+              <span>GitHub</span>
             </a>
           )}
           {personalInfo?.linkedin && personalInfo.linkedin !== '#' && (
             <a href={personalInfo.linkedin} target="_blank" rel="noreferrer"
-              className="text-white/30 hover:text-siteCyan transition-colors font-body text-xs uppercase tracking-wider">
-              LinkedIn
+              className="group flex items-center gap-2 text-white/30 hover:text-siteCyan transition-colors font-body text-xs uppercase tracking-wider">
+              <Linkedin size={14} />
+              <span>LinkedIn</span>
             </a>
           )}
           {personalInfo?.email && (
             <a href={`mailto:${personalInfo.email}`}
-              className="text-white/30 hover:text-siteCyan transition-colors font-body text-xs uppercase tracking-wider">
-              Email
+              className="group flex items-center gap-2 text-white/30 hover:text-siteCyan transition-colors font-body text-xs uppercase tracking-wider">
+              <Mail size={14} />
+              <span>Email</span>
             </a>
           )}
         </div>
+
 
         {/* Copyright */}
         <p className="text-white/20 font-body text-xs">
