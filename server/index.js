@@ -26,6 +26,21 @@ app.use(express.json());
 app.use('/api/contact', contactRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/portfolio', portfolioRoutes);
+app.get('/api/db-debug', async (req, res) => {
+  try {
+    const Portfolio = require('./models/Portfolio');
+    const count = await Portfolio.countDocuments();
+    res.json({
+      status: 'OK',
+      connectionState: mongoose.connection.readyState,
+      dbName: mongoose.connection.name,
+      recordCount: count,
+      envUriExists: !!process.env.MONGO_URI
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio')
